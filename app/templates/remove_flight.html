@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Flight</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .flights-table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .flights-table th,
+        .flights-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .flights-table th {
+            background-color: #f8f8f8;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .flights-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .flights-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .remove-btn {
+            padding: 6px 12px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .remove-btn:hover {
+            background-color: #c82333;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: #888;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Remove Flight</h2>
+
+    {% if flights %}
+    <table class="flights-table">
+        <thead>
+            <tr>
+                <th>Flight Number</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for flight in flights %}
+            <tr>
+                <td>{{ flight.flight_number }}</td>
+                <td>{{ flight.date }}</td>
+                <td>{{ flight.time }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('remove_flight', flight_id=flight.id) }}" style="display:inline;">
+                        <button type="submit" class="remove-btn">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="message">No flights available.</p>
+    {% endif %}
+
+    {% if message %}
+    <p class="message">{{ message }}</p>
+    {% endif %}
+</body>
+
+</html>
