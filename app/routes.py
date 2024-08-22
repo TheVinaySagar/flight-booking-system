@@ -97,19 +97,24 @@ def add_flight():
 @app.route('/remove_flight', methods=['GET', 'POST'])
 def remove_flight():
     if request.method == 'POST':
-        # Handle the removal of a specific flight
         flight_id = request.form.get('flight_id')
         flight = Flight.query.get(flight_id)
-
         if flight:
-            db.session.delete(flight)
-            db.session.commit()
-            flash(f'Flight {flight.flight_number} has been removed successfully.', 'success')
+            try:
+                # First, delete all bookings associated with this flight
+                Booking.query.filter_by(flight_id=flight_id).delete()
+                
+                # Then delete the flight
+                db.session.delete(flight)
+                db.session.commit()
+                flash(f'Flight {flight.flight_number} and all associated bookings have been removed successfully.', 'success')
+            except Exception as e:
+                db.session.rollback()
+                flash(f'An error occurred: {str(e)}', 'error')
         else:
-            flash(f'Flight not found.', 'error')
-        flash(f'Flight not found.', 'error')
+            flash('Flight not found.', 'error')
         return redirect(url_for('remove_flight'))
-
+    
     # Handle the display of all flights
     flights = Flight.query.all()
     return render_template('remove_flight.html', flights=flights)

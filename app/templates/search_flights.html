@@ -1,96 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Flights</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        h2 {
+        h2, h3 {
             text-align: center;
-            margin-top: 20px;
-            color: #333;
+            margin-top: 30px;
+            color: #2c3e50;
+            font-weight: 600;
         }
-
         form {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-top: 20px;
+            margin-top: 30px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
         }
-
         input[type="date"],
         input[type="time"] {
-            margin-bottom: 10px;
-            padding: 10px;
-            width: 200px;
+            margin-bottom: 15px;
+            padding: 12px;
+            width: 250px;
             font-size: 16px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
+            border-radius: 50px;
+            border: 1px solid #bdc3c7;
+            transition: all 0.3s ease;
         }
-
+        input[type="date"]:focus,
+        input[type="time"]:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
         button {
-            padding: 10px 20px;
-            background-color: #007bff;
+            padding: 12px 24px;
+            background-color: #3498db;
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 50px;
             cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
         }
-
         button:hover {
-            background-color: #0056b3;
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
         }
-
         .flights-table {
-            width: 60%;
-            border-collapse: collapse;
-            margin: 20px auto;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-
+            width: 80%;
+            max-width: 800px;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 30px auto;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
         }
-
         .flights-table th,
         .flights-table td {
-            padding: 12px 15px;
-            text-align: center;
-            border: 1px solid #dddddd;
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
         }
-
         .flights-table th {
-            background-color: #f2f2f2;
+            background-color: #34495e;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
         }
-
+        .flights-table tr:last-child td {
+            border-bottom: none;
+        }
         .flights-table tr:nth-child(even) {
             background-color: #f9f9f9;
         }
-
         .flights-table tr:hover {
             background-color: #f1f1f1;
         }
-
         .book-link {
             text-decoration: none;
             color: white;
-            background-color: #4CAF50;
-            padding: 6px 12px;
-            border-radius: 4px;
+            background-color: #2ecc71;
+            padding: 8px 16px;
+            border-radius: 50px;
             display: inline-block;
+            transition: all 0.3s ease;
+            font-weight: bold;
         }
-
         .book-link:hover {
-            background-color: #45a049;
+            background-color: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
         }
     </style>
 </head>
-
 <body>
     <h2>Search Flights</h2>
     <form method="POST">
@@ -98,9 +121,8 @@
         <input type="time" name="time" required>
         <button type="submit">Search</button>
     </form>
-
     {% if flights %}
-    <h3 style="text-align: center;">Available Flights</h3>
+    <h3>Available Flights</h3>
     <table class="flights-table">
         <thead>
             <tr>
@@ -123,5 +145,4 @@
     </table>
     {% endif %}
 </body>
-
 </html>
