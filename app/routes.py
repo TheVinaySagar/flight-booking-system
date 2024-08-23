@@ -97,13 +97,14 @@ def add_flight():
 @app.route('/remove_flight', methods=['GET', 'POST'])
 def remove_flight():
     if request.method == 'POST':
+        # Handle flight removal
         flight_id = request.form.get('flight_id')
         flight = Flight.query.get(flight_id)
         if flight:
             try:
                 # First, delete all bookings associated with this flight
                 Booking.query.filter_by(flight_id=flight_id).delete()
-                
+
                 # Then delete the flight
                 db.session.delete(flight)
                 db.session.commit()
@@ -114,10 +115,15 @@ def remove_flight():
         else:
             flash('Flight not found.', 'error')
         return redirect(url_for('remove_flight'))
+
+    # Handle the display of all flights or search by flight number
+    search_query = request.args.get('search')
+    if search_query:
+        flights = Flight.query.filter(Flight.flight_number.ilike(f'%{search_query}%')).all()
+    else:
+        flights = Flight.query.all()
     
-    # Handle the display of all flights
-    flights = Flight.query.all()
-    return render_template('remove_flight.html', flights=flights)
+    return render_template('remove_flight.html', flights=flights, search_query=search_query)
 
 
 
@@ -131,9 +137,17 @@ def remove_flight():
 def view_all_bookings():
     if not session.get('user_id') or not session.get('is_admin'):
         return redirect(url_for('login'))
+    
     if request.method == 'POST':
         flight_number = request.form['flight_number']
         flight = Flight.query.filter_by(flight_number=flight_number).first()
-        bookings = Booking.query.filter_by(flight_id=flight.id).all()
-        return render_template('view_bookings.html', bookings=bookings)
-    return render_template('view_bookings.html')
+        if flight:
+            bookings = Booking.query.filter_by(flight_id=flight.id).all()
+        else:
+            bookings = []  # No flight found, so no bookings
+        return render_template('view_bookings.html', bookings=bookings, flight_number=flight_number)
+    
+    # If no flight number is provided, show all bookings
+    bookings = Booking.query.all()
+    return render_template('view_bookings.html', bookings=bookings)
+

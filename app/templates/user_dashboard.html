@@ -8,39 +8,44 @@
         /* General Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e0eafc 100%);
             margin: 0;
             padding: 0;
-            color: #333;
+            color: #444;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         h2, h3 {
-            text-align: center;
-            margin-top: 30px;
+            margin: 20px 0;
             color: #2c3e50;
-            font-weight: 600;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
         /* Dashboard Links */
         .dashboard-links {
-            text-align: center;
-            margin: 30px 0;
+            margin: 20px 0;
         }
         .dashboard-btn {
             display: inline-block;
             margin: 10px;
-            padding: 12px 24px;
-            background-color: #3498db;
+            padding: 14px 28px;
+            background-color: #1abc9c;
             color: white;
             border-radius: 50px;
             font-weight: bold;
             text-decoration: none;
+            font-size: 16px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
         .dashboard-btn:hover {
-            background-color: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+            background-color: #16a085;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         .logout-btn {
             background-color: #e74c3c;
@@ -50,24 +55,23 @@
         }
         /* Table Styles */
         .bookings-table {
-            width: 80%;
-            max-width: 800px;
-            margin: 30px auto;
-            border-collapse: separate;
-            border-spacing: 0;
+            width: 90%;
+            max-width: 900px;
+            margin: 20px auto;
+            border-collapse: collapse;
             background-color: #fff;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
             overflow: hidden;
         }
         .bookings-table th,
         .bookings-table td {
-            padding: 15px;
+            padding: 18px 20px;
             text-align: left;
             border-bottom: 1px solid #ecf0f1;
         }
         .bookings-table th {
-            background-color: #34495e;
+            background-color: #2980b9;
             font-weight: bold;
             color: #fff;
             text-transform: uppercase;
@@ -78,7 +82,7 @@
             border-bottom: none;
         }
         .bookings-table tr:nth-child(even) {
-            background-color: #f9f9f9;
+            background-color: #f8f9fa;
         }
         .bookings-table tr:hover {
             background-color: #f1f1f1;
@@ -90,12 +94,12 @@
             margin: 40px auto;
             text-align: center;
             background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
         }
         .remove-flight-section input[type="text"] {
-            padding: 12px;
+            padding: 14px;
             width: 60%;
             margin-right: 10px;
             border: 1px solid #bdc3c7;
@@ -109,7 +113,7 @@
             box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
         .remove-flight-section button {
-            padding: 12px 24px;
+            padding: 14px 28px;
             background-color: #e74c3c;
             color: white;
             border: none;
@@ -120,16 +124,17 @@
         }
         .remove-flight-section button:hover {
             background-color: #c0392b;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
         /* No Data Message */
         .no-data {
             text-align: center;
             margin-top: 30px;
-            color: #7f8c8d;
-            font-size: 18px;
+            color: #95a5a6;
+            font-size: 20px;
             font-style: italic;
+            padding: 20px;
         }
     </style>
 </head>

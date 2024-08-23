@@ -128,6 +128,12 @@
             font-size: 18px;
             font-style: italic;
         }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .bookings-table, .bookings-table th, .bookings-table td {
+                font-size: 0.9em;
+            }
+        }
     </style>
 </head>
 
@@ -140,7 +146,11 @@
         </form>
 
         {% if bookings %}
-        <h3>Bookings for Flight</h3>
+        {% if flight_number %}
+        <h3>Bookings for Flight {{ flight_number }}</h3>
+        {% else %}
+        <h3>All Bookings</h3>
+        {% endif %}
         <table class="bookings-table">
             <thead>
                 <tr>
@@ -162,8 +172,9 @@
             </tbody>
         </table>
         {% else %}
-        <p class="no-data">No bookings found for this flight number.</p>
+        <p class="no-data">No bookings found{% if flight_number %} for this flight number{% endif %}.</p>
         {% endif %}
     </div>
 </body>
+
 </html>

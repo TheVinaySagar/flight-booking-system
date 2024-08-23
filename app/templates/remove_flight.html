@@ -21,6 +21,29 @@
             color: #2c3e50;
         }
 
+        .search-form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-form input[type="text"] {
+            padding: 10px;
+            font-size: 1em;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-form button {
+            padding: 10px 15px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: none;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
         .flights-table {
             width: 90%;
             margin: 0 auto 30px;
@@ -50,8 +73,10 @@
             background-color: #f9f9f9;
         }
 
-        .flights-table tr:hover {
+        .flights-table tr:hover td {
             background-color: #ecf0f1;
+            transform: scale(1.02);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .remove-btn {
@@ -100,6 +125,11 @@
     <div class="container">
         <h2>Remove Flight</h2>
 
+        <form method="GET" class="search-form">
+            <input type="text" name="search" placeholder="Search by Flight Number" value="{{ search_query }}">
+            <button type="submit">Search</button>
+        </form>
+
         {% if flights %}
         <table class="flights-table">
             <thead>
@@ -127,7 +157,7 @@
             </tbody>
         </table>
         {% else %}
-        <p class="message">No flights available.</p>
+        <p class="message">No flights available{% if search_query %} matching "{{ search_query }}"{% endif %}.</p>
         {% endif %}
 
         {% if message %}
