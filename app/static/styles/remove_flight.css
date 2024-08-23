@@ -1,84 +1,125 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     margin: 0;
     padding: 0;
-    color: #444;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 90%;
+    max-width: 800px;
+    margin: 40px 0;
+    backdrop-filter: blur(10px);
 }
 
 h2 {
-    text-align: center;
-    margin: 40px 0 20px;
-    font-size: 2em;
     color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    margin: 15px auto 0;
+    border-radius: 2px;
 }
 
 .search-form {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .search-form input[type="text"] {
-    padding: 10px;
-    font-size: 1em;
+    padding: 15px;
     width: 300px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    margin-right: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #f0f0f0;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-form input[type="text"]:focus {
+    outline: none;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
 }
 
 .search-form button {
-    padding: 10px 15px;
-    font-size: 1em;
-    border-radius: 5px;
-    border: none;
-    background-color: #3498db;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.search-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.15);
 }
 
 .flights-table {
-    width: 90%;
-    margin: 0 auto 30px;
-    border-collapse: collapse;
-    background-color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    background-color: transparent;
 }
 
 .flights-table th,
 .flights-table td {
-    padding: 15px 20px;
+    padding: 15px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
-    color: #555;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .flights-table th {
-    background-color: #34495e;
-    color: #ecf0f1;
+    background-color: rgba(102, 126, 234, 0.8);
+    color: white;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.flights-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+.flights-table tr {
+    transition: all 0.3s ease;
 }
 
 .flights-table tr:hover td {
-    background-color: #ecf0f1;
+    background-color: rgba(255, 255, 255, 1);
     transform: scale(1.02);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .remove-btn {
-    padding: 10px 20px;
+    padding: 15px 25px;
     background-color: #e74c3c;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 16px;
     transition: background-color 0.3s ease;
 }
 
@@ -89,14 +130,9 @@ h2 {
 .message {
     text-align: center;
     margin-top: 20px;
-    color: #7f8c8d;
-    font-size: 1.2em;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    color: #2c3e50;
+    font-size: 18px;
+    font-style: italic;
 }
 
 /* Responsive Design */

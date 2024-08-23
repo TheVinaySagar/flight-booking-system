@@ -1,64 +1,79 @@
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #e2ebf0 0%, #dfe9f3 100%);
-    min-height: 100vh;
+    color: #333;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #333;
+    min-height: 100vh;
 }
+
 h2, h3 {
     text-align: center;
-    color: #34495e;
+    color: #ffffff;
     font-weight: 700;
     margin: 20px 0;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
+
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
     margin-bottom: 30px;
 }
+
 input[type="date"],
 input[type="time"] {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     padding: 15px;
-    width: 280px;
+    width: 100%;
+    max-width: 400px;
     font-size: 16px;
-    border-radius: 50px;
-    border: 1px solid #bdc3c7;
+    border-radius: 10px;
+    border: none;
+    background-color: #f0f0f0;
     transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
 }
+
 input[type="date"]:focus,
 input[type="time"]:focus {
     outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
 }
+
 button {
     padding: 15px 30px;
     background-color: #3498db;
     color: white;
     border: none;
-    border-radius: 50px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
     transition: all 0.3s ease;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
+
 button:hover {
     background-color: #2980b9;
     transform: translateY(-4px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
+
+/* Table Styles */
 .flights-table {
     width: 90%;
     max-width: 900px;
@@ -69,12 +84,14 @@ button:hover {
     border-radius: 15px;
     overflow: hidden;
 }
+
 .flights-table th,
 .flights-table td {
     padding: 20px;
     text-align: left;
     border-bottom: 1px solid #ecf0f1;
 }
+
 .flights-table th {
     background-color: #34495e;
     color: white;
@@ -83,27 +100,41 @@ button:hover {
     font-size: 14px;
     letter-spacing: 1px;
 }
+
 .flights-table tr:last-child td {
     border-bottom: none;
 }
+
 .flights-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
+
 .flights-table tr:hover {
     background-color: #f1f1f1;
 }
+
+/* Link Styles */
 .book-link {
     text-decoration: none;
     color: white;
     background-color: #2ecc71;
     padding: 10px 20px;
-    border-radius: 50px;
+    border-radius: 10px;
     display: inline-block;
     transition: all 0.3s ease;
     font-weight: bold;
 }
+
 .book-link:hover {
     background-color: #27ae60;
     transform: translateY(-4px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    form {
+        width: 95%;
+        padding: 30px;
+    }
 }
