@@ -2,6 +2,13 @@ from flask import render_template, redirect, url_for, flash, request, session
 from app import app, db
 from app.models import User, Flight, Booking
 
+
+from flask import send_from_directory
+
+@app.route('/static/css/<path:filename>')
+def serve_static(filename):
+    return send_from_directory(app.root_path + '/static/css/', filename)
+
 # User routes
 @app.route('/')
 def index():

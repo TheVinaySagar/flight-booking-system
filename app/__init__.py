@@ -2,6 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 
+
 # Create instances of Flask, SQLAlchemy, and LoginManager
 app = Flask(__name__)
 app.config.from_object('config.Config')  # Load configuration from config.py
