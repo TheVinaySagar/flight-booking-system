@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Flight</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/add_flight.css') }}">
 </head>
-
 <body>
-    <h2>Add Flight</h2>
-    <form method="POST">
-        <input type="text" name="flight_number" placeholder="Flight Number" required>
-        <input type="date" name="date" required>
-        <input type="time" name="time" required>
-        <button type="submit">Add Flight</button>
-    </form>
+    <div class="container">
+        <h2>Add Flight</h2>
+        <form method="POST">
+            <input type="text" name="flight_number" placeholder="Flight Number" required>
+            <input type="date" name="date" required>
+            <input type="time" name="time" required>
+            <button type="submit">Add Flight</button>
+        </form>
+    </div>
 </body>
-
 </html>

@@ -19,11 +19,22 @@ def signup():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        
+        # Check if the username already exists
+        existing_user = User.query.filter_by(username=username).first()
+        if existing_user:
+            # Username exists, show an error message
+            flash('Username already exists. Please choose a different username.', 'error')
+            return render_template('signup.html')
+        
+        # Create a new user and add to the database
         user = User(username=username, password=password)
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('login'))
+    
     return render_template('signup.html')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

@@ -9,7 +9,7 @@ class User(db.Model):
 
 class Flight(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    flight_number = db.Column(db.String(20), unique=True, nullable=False)
+    flight_number = db.Column(db.String(20), nullable=False)
     date = db.Column(db.String(20), nullable=False)
     time = db.Column(db.String(20), nullable=False)
     available_seats = db.Column(db.Integer, default=60)

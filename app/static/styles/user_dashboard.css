@@ -1,6 +1,5 @@
-
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #f8f9fa 0%, #e0eafc 100%);
     margin: 0;
     padding: 0;
@@ -11,17 +10,26 @@ body {
     justify-content: center;
     align-items: center;
 }
-h2, h3 {
-    margin: 20px 0;
+
+h2,
+h3 {
     color: #2c3e50;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
+
+h3 {
+    font-size: 26px;
+}
+
 /* Dashboard Links */
 .dashboard-links {
     margin: 20px 0;
 }
+
 .dashboard-btn {
     display: inline-block;
     margin: 10px;
@@ -35,17 +43,21 @@ h2, h3 {
     transition: all 0.3s ease;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
+
 .dashboard-btn:hover {
     background-color: #16a085;
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+
 .logout-btn {
     background-color: #e74c3c;
 }
+
 .logout-btn:hover {
     background-color: #c0392b;
 }
+
 /* Table Styles */
 .bookings-table {
     width: 90%;
@@ -57,12 +69,14 @@ h2, h3 {
     border-radius: 15px;
     overflow: hidden;
 }
+
 .bookings-table th,
 .bookings-table td {
     padding: 18px 20px;
     text-align: left;
     border-bottom: 1px solid #ecf0f1;
 }
+
 .bookings-table th {
     background-color: #2980b9;
     font-weight: bold;
@@ -71,15 +85,19 @@ h2, h3 {
     font-size: 14px;
     letter-spacing: 1px;
 }
+
 .bookings-table tr:last-child td {
     border-bottom: none;
 }
+
 .bookings-table tr:nth-child(even) {
     background-color: #f8f9fa;
 }
+
 .bookings-table tr:hover {
     background-color: #f1f1f1;
 }
+
 /* Remove Flight Section */
 .remove-flight-section {
     width: 80%;
@@ -91,6 +109,7 @@ h2, h3 {
     border-radius: 15px;
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
 }
+
 .remove-flight-section input[type="text"] {
     padding: 14px;
     width: 60%;
@@ -100,11 +119,13 @@ h2, h3 {
     font-size: 16px;
     transition: all 0.3s ease;
 }
+
 .remove-flight-section input[type="text"]:focus {
     outline: none;
     border-color: #3498db;
     box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
+
 .remove-flight-section button {
     padding: 14px 28px;
     background-color: #e74c3c;
@@ -115,11 +136,13 @@ h2, h3 {
     font-size: 16px;
     transition: all 0.3s ease;
 }
+
 .remove-flight-section button:hover {
     background-color: #c0392b;
     transform: translateY(-4px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
+
 /* No Data Message */
 .no-data {
     text-align: center;

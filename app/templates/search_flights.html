@@ -4,38 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Flights</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/search_flights.css') }}">
-
 </head>
 <body>
-    <h2>Search Flights</h2>
-    <form method="POST">
-        <input type="date" name="date" required>
-        <input type="time" name="time" required>
-        <button type="submit">Search</button>
-    </form>
-    {% if flights %}
-    <h3>Available Flights</h3>
-    <table class="flights-table">
-        <thead>
-            <tr>
-                <th>Flight Number</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for flight in flights %}
-            <tr>
-                <td>{{ flight.flight_number }}</td>
-                <td>{{ flight.date }}</td>
-                <td>{{ flight.time }}</td>
-                <td><a href="{{ url_for('book_flight', flight_id=flight.id) }}" class="book-link">Book Now</a></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% endif %}
+    <div class="container">
+        <h2>Search Flights</h2>
+        <form method="POST">
+            <input type="date" name="date" required>
+            <input type="time" name="time" required>
+            <button type="submit">Search</button>
+        </form>
+        {% if flights %}
+        <h3>Available Flights</h3>
+        <table class="flights-table">
+            <thead>
+                <tr>
+                    <th>Flight Number</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for flight in flights %}
+                <tr>
+                    <td>{{ flight.flight_number }}</td>
+                    <td>{{ flight.date }}</td>
+                    <td>{{ flight.time }}</td>
+                    <td><a href="{{ url_for('book_flight', flight_id=flight.id) }}" class="book-link">Book Now</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
 </body>
 </html>

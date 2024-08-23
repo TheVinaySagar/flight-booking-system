@@ -1,4 +1,3 @@
-
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -6,44 +5,54 @@ body {
     padding: 0;
     color: #333;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    max-width: 500px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+}
+
 h2, h3 {
+    color: #2c3e50;
     text-align: center;
-    color: #ffffff;
-    font-weight: 700;
-    margin: 20px 0;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    font-size: 32px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    margin-bottom: 30px;
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 input[type="date"],
 input[type="time"] {
-    margin-bottom: 25px;
-    padding: 15px;
+    margin-bottom: 20px;
+    padding: 12px;
     width: 100%;
     max-width: 400px;
     font-size: 16px;
-    border-radius: 10px;
-    border: none;
-    background-color: #f0f0f0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
     transition: all 0.3s ease;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
     text-align: center;
 }
 
@@ -51,34 +60,33 @@ input[type="date"]:focus,
 input[type="time"]:focus {
     outline: none;
     background-color: #ffffff;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+    border-color: #667eea;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
 }
 
 button {
-    padding: 15px 30px;
+    padding: 12px 30px;
     background-color: #3498db;
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     transition: all 0.3s ease;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
     background-color: #2980b9;
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Table Styles */
 .flights-table {
-    width: 90%;
-    max-width: 900px;
+    width: 100%;
     border-collapse: collapse;
-    margin: 30px auto;
+    margin: 30px 0;
     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
     background-color: white;
     border-radius: 15px;
@@ -87,7 +95,7 @@ button:hover {
 
 .flights-table th,
 .flights-table td {
-    padding: 20px;
+    padding: 15px;
     text-align: left;
     border-bottom: 1px solid #ecf0f1;
 }
@@ -113,13 +121,12 @@ button:hover {
     background-color: #f1f1f1;
 }
 
-/* Link Styles */
 .book-link {
     text-decoration: none;
     color: white;
     background-color: #2ecc71;
     padding: 10px 20px;
-    border-radius: 10px;
+    border-radius: 8px;
     display: inline-block;
     transition: all 0.3s ease;
     font-weight: bold;
@@ -127,14 +134,21 @@ button:hover {
 
 .book-link:hover {
     background-color: #27ae60;
-    transform: translateY(-4px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive design */
 @media (max-width: 480px) {
-    form {
+    .container {
         width: 95%;
-        padding: 30px;
+        padding: 15px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    .flights-table {
+        width: 100%;
     }
 }

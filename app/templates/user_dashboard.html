@@ -4,58 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/user_dashboard.css') }}">
-    <script>
-        function showBookings() {
-            var bookingsSection = document.getElementById('bookings-section');
-            bookingsSection.style.display = 'block';
 
-            var searchFlightsBtn = document.getElementById('search-flights-btn');
-            var logoutBtn = document.getElementById('logout-btn');
-
-            searchFlightsBtn.style.display = 'none';
-            logoutBtn.style.display = 'none';
-        }
-    </script>
-    <style>
-        /* Hide bookings section by default */
-        #bookings-section {
-            display: none;
-        }
-    </style>
 </head>
 <body>
     <h2>User Dashboard</h2>
     <div class="dashboard-links">
-        <a href="{{ url_for('search_flights') }}" class="dashboard-btn" id="search-flights-btn">Search Flights</a>
-        <a href="javascript:void(0);" onclick="showBookings();" class="dashboard-btn" id="my-bookings-btn">My Bookings</a>
-        <a href="{{ url_for('logout') }}" class="dashboard-btn logout-btn" id="logout-btn">Logout</a>
+        <a href="{{ url_for('search_flights') }}" class="dashboard-btn">Search Flights</a>
+        <a href="{{ url_for('my_bookings') }}" class="dashboard-btn">My Bookings</a>
+        <a href="{{ url_for('logout') }}" class="dashboard-btn logout-btn">Logout</a>
     </div>
-
-    <div id="bookings-section">
-        {% if bookings %}
-        <h3>Your Bookings</h3>
-        <table class="bookings-table">
-            <thead>
-                <tr>
-                    <th>Flight Number</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for booking in bookings %}
-                <tr>
-                    <td>{{ booking.flight.flight_number }}</td>
-                    <td>{{ booking.flight.date }}</td>
-                    <td>{{ booking.flight.time }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        {% else %}
-        <p class="no-data">You don't have any bookings yet.</p>
-        {% endif %}
-    </div>
+    {% if bookings %}
+    <h3>Your Bookings</h3>
+    <table class="bookings-table">
+        <thead>
+            <tr>
+                <th>Flight Number</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.flight.flight_number }}</td>
+                <td>{{ booking.flight.date }}</td>
+                <td>{{ booking.flight.time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
 </body>
 </html>
