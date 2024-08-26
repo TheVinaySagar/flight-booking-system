@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/admin_login.css') }}">
+</head>
+<body>
+    <div class="admin-login-container">
+        <h2>Admin Login</h2>
+        
+        <!-- Flash Message Display -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <form method="POST" action="{{ url_for('admin_login') }}">
+            <input type="text" name="admin_username" placeholder="Admin Username" required>
+            <input type="password" name="admin_password" placeholder="Admin Password" required>
+            <button type="submit">Admin Login</button>
+        </form>
+        <p>Not an admin? <a href="{{ url_for('login') }}">Go to User Login</a></p>
+    </div>
+</body>
+</html>

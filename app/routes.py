@@ -1,6 +1,7 @@
 from flask import render_template, redirect, url_for, flash, request, session
 from app import app, db
 from app.models import User, Flight, Booking
+from datetime import datetime
 
 
 from flask import send_from_directory
@@ -41,14 +42,32 @@ def login():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-        user = User.query.filter_by(username=username, password=password).first()
+        user = User.query.filter_by(username=username, password=password,is_admin=False).first()
         if user:
             session['user_id'] = user.id
-            session['is_admin'] = user.is_admin
-            return redirect(url_for('user_dashboard' if not user.is_admin else 'admin_dashboard'))
+            session['is_admin'] = False
+            return redirect(url_for('user_dashboard'))
         else:
-            return "Invalid credentials"
+            # flash("Invalid credantials! ",'error')
+            flash("Invalid username or password", "error")
     return render_template('login.html')
+
+@app.route('/admin_login', methods=['GET', 'POST'])
+def admin_login():
+    if request.method == 'POST':
+        username = request.form['admin_username']
+        password = request.form['admin_password']
+        admin = User.query.filter_by(username=username, password=password, is_admin=True).first()
+
+        if admin:
+            session['user_id'] = admin.id
+            session['is_admin'] = True  # Set is_admin to True in the session
+            return redirect(url_for('admin_dashboard'))  # Redirect to admin dashboard
+        else:
+            flash('Invalid admin credentials. Please try again.', 'danger')
+    return render_template('admin_login.html')
+
+
 
 @app.route('/logout')
 def logout():
@@ -66,8 +85,20 @@ def search_flights():
     if request.method == 'POST':
         date = request.form['date']
         time = request.form['time']
-        flights = Flight.query.filter_by(date=date, time=time).all()
+        
+        # Convert the date and time into a datetime object for comparison
+        search_datetime = datetime.strptime(f'{date} {time}', '%Y-%m-%d %H:%M')
+        
+        # Query to find all flights after the given date and time
+        flights = Flight.query.filter(
+            db.and_(
+                Flight.date > search_datetime.date(),
+                Flight.time >= search_datetime.time()
+            )
+        ).all()
+
         return render_template('search_flights.html', flights=flights)
+    
     return render_template('search_flights.html')
 
 @app.route('/book_flight/<int:flight_id>')
